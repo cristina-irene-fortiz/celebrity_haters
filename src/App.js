@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent
 
 function App() {
   return (
-    <Router basename="/my-portfolio">
+    <Router basename="/celebrity_haters">
       <div>
         <AppBar position="static">
           <Toolbar>
