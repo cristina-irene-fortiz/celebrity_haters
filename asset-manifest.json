@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/celebrity_haters/static/css/main.6967f24c.css",
+    "main.js": "/celebrity_haters/static/js/main.4aecf802.js",
+    "index.html": "/celebrity_haters/index.html",
+    "main.6967f24c.css.map": "/celebrity_haters/static/css/main.6967f24c.css.map",
+    "main.4aecf802.js.map": "/celebrity_haters/static/js/main.4aecf802.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6967f24c.css",
+    "static/js/main.4aecf802.js"
+  ]
+}
