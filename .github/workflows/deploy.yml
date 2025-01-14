@@ -27,6 +27,11 @@ jobs:
         NODE_OPTIONS: --openssl-legacy-provider # Your package.json includes this
       run: npm run build
 
+    - name: Configure Git
+      run: |
+        git config --global user.email "cfortiz1@jhu.edu"
+        git config --global user.name "cristina-irene-fortiz"
+
     - name: Deploy to GitHub Pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub Actions
