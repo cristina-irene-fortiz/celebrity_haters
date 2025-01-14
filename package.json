@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://cristina-irene-fortiz.github.io/celebrity_haters",
   "dependencies": {
+    "@mui/icons-material": "^6.3.1", // Replace with the latest version
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.3.1",
