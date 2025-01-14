@@ -34,6 +34,7 @@ jobs:
 
     - name: Deploy to GitHub Pages
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub Actions token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Use the GitHub Actions token
       run: |
-        npx gh-pages -d build --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/cristina-irene-fortiz/celebrity_haters.git
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/cristina-irene-fortiz/celebrity_haters.git
+        npx gh-pages -d build
