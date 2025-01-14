@@ -32,21 +32,14 @@ function App() {
         {/* Hero Section */}
         <AppBar position="static" style={{ backgroundColor: '#ffe4e1', color: '#333' }}>
           <Toolbar style={{ justifyContent: 'center' }}>
-            <img
-              src={heartImage}
-              alt="Heart"
-              style={{ marginRight: '10px', height: '40px', transform: 'none' }}
-            />
+            <FavoriteIcon style={{ marginRight: '10px', color: '#ff4081', fontSize: '40px' }} />
             <Typography variant="h4" component="div" align="center">
               Celebrity "Haters" Analysis
             </Typography>
-            <img
-              src={heartImage}
-              alt="Flipped Heart"
-              style={{ marginLeft: '10px', height: '40px', transform: 'scaleX(-1)' }}
-            />
+            <FavoriteIcon style={{ marginLeft: '10px', color: '#ff4081', fontSize: '40px' }} />
           </Toolbar>
         </AppBar>
+
 
         {/* Main Content */}
         <Container style={{ marginTop: '20px' }}>
