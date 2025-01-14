@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/celebrity_haters/static/css/main.6967f24c.css",
-    "main.js": "/celebrity_haters/static/js/main.8237678c.js",
+    "main.js": "/celebrity_haters/static/js/main.bc1c9485.js",
     "index.html": "/celebrity_haters/index.html",
     "main.6967f24c.css.map": "/celebrity_haters/static/css/main.6967f24c.css.map",
-    "main.8237678c.js.map": "/celebrity_haters/static/js/main.8237678c.js.map"
+    "main.bc1c9485.js.map": "/celebrity_haters/static/js/main.bc1c9485.js.map"
   },
   "entrypoints": [
     "static/css/main.6967f24c.css",
-    "static/js/main.8237678c.js"
+    "static/js/main.bc1c9485.js"
   ]
 }
