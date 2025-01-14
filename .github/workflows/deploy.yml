@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Change this if your default branch is different
+      - main # Adjust if your default branch is different
 
 jobs:
   deploy:
@@ -16,23 +16,24 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20' # Ensure this matches your project's Node.js version
-        cache: 'npm' # Caches npm dependencies to speed up builds
+        node-version: '20' # Match your Node.js version
+        cache: 'npm'
 
     - name: Install Dependencies
-      run: npm ci # 'npm ci' ensures a clean and reproducible install
+      run: npm ci
 
     - name: Build Project
       env:
-        NODE_OPTIONS: --openssl-legacy-provider # Your package.json includes this
+        NODE_OPTIONS: --openssl-legacy-provider
       run: npm run build
 
     - name: Configure Git
       run: |
         git config --global user.email "cfortiz1@jhu.edu"
-        git config --global user.name "Cristina Irene Fortiz"
+        git config --global user.name "cristina-irene-fortiz"
 
     - name: Deploy to GitHub Pages
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub Actions
-      run: npm run deploy
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub Actions token
+      run: |
+        npx gh-pages -d build --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/cristina-irene-fortiz/celebrity_haters.git
