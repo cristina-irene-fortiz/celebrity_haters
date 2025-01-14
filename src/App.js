@@ -50,6 +50,16 @@ function App() {
             <Typography variant="body1">
               Explore interactive visualizations about sentiment, demographics, and more.
             </Typography>
+            <FormControl style={{ marginTop: '20px', minWidth: 200 }}>
+              <Select defaultValue="Justin Baldoni" displayEmpty>
+                <MenuItem value="Justin Baldoni">Justin Baldoni</MenuItem>
+                <MenuItem value="Blake Lively">Blake Lively</MenuItem>
+                <MenuItem value="Ryan Reynolds">Ryan Reynolds</MenuItem>
+                <MenuItem value="Taylor Swift">Taylor Swift</MenuItem>
+                <MenuItem value="Kim Kardashian">Kim Kardashian</MenuItem>
+                <MenuItem value="Donald Trump">Donald Trump</MenuItem>
+              </Select>
+            </FormControl>
           </Box>
 
           {/* Data Insights Section */}
