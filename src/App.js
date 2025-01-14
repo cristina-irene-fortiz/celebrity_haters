@@ -3,20 +3,31 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent, Box } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+const heartImage = './hearts.jpg';
+
 function App() {
   return (
     <Router basename="/celebrity_haters">
       <div>
-        {/* Titlebar with hearts */}
         <AppBar position="static" style={{ backgroundColor: '#f5f5f5', color: '#333' }}>
           <Toolbar style={{ justifyContent: 'center' }}>
-            <FavoriteIcon style={{ marginRight: '10px', color: 'red' }} />
+            <img
+              src={heartImage}
+              alt="Heart"
+              style={{ marginRight: '10px', height: '40px', transform: 'none' }}
+            />
             <Typography variant="h4" component="div" align="center">
               Celebrity "Haters" Analysis
             </Typography>
-            <FavoriteIcon style={{ marginLeft: '10px', color: 'red' }} />
+            <img
+              src={heartImage}
+              alt="Flipped Heart"
+              style={{ marginLeft: '10px', height: '40px', transform: 'scaleX(-1)' }}
+            />
           </Toolbar>
         </AppBar>
+
+
 
         {/* Navigation Bar */}
         <AppBar position="static">
