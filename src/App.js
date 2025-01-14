@@ -1,15 +1,36 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { AppBar, Toolbar, Typography, Button, Container, Grid, Card, CardContent, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Container, Grid, Box } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { pink } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Chart } from 'react-google-charts'; // For placeholder visualizations
 
 const heartImage = './hearts.jpg';
 
+// Custom theme for a pink and poppy vibe
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: pink[500],
+    },
+    secondary: {
+      main: '#ff4081',
+    },
+  },
+  typography: {
+    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+    h4: {
+      fontWeight: 600,
+    },
+  },
+});
+
 function App() {
   return (
-    <Router basename="/celebrity_haters">
+    <ThemeProvider theme={theme}>
       <div>
-        <AppBar position="static" style={{ backgroundColor: '#f5f5f5', color: '#333' }}>
+        {/* Hero Section */}
+        <AppBar position="static" style={{ backgroundColor: '#ffe4e1', color: '#333' }}>
           <Toolbar style={{ justifyContent: 'center' }}>
             <img
               src={heartImage}
@@ -27,97 +48,85 @@ function App() {
           </Toolbar>
         </AppBar>
 
-
-
-        {/* Navigation Bar */}
-        <AppBar position="static">
-          <Toolbar style={{ justifyContent: 'center' }}>
-            <Button color="inherit" component={Link} to="/">Home</Button>
-            <Button color="inherit" component={Link} to="/about">About</Button>
-            <Button color="inherit" component={Link} to="/projects">Projects</Button>
-          </Toolbar>
-        </AppBar>
-
         {/* Main Content */}
         <Container style={{ marginTop: '20px' }}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-          </Routes>
+          <Box textAlign="center" my={5}>
+            <Typography variant="h5" gutterBottom style={{ color: pink[700] }}>
+              Dive into the data behind celebrity discussions on Reddit
+            </Typography>
+            <Typography variant="body1">
+              Explore interactive visualizations about sentiment, demographics, and more.
+            </Typography>
+          </Box>
+
+          {/* Data Insights Section */}
+          <Grid container spacing={4} justifyContent="center">
+            {/* Visualization Cards */}
+            <VisualizationCard
+              title="Sentiment Distribution"
+              description="Analyze sentiment trends over time."
+              chartData={[
+                ['Sentiment', 'Count'],
+                ['Positive', 500],
+                ['Negative', 300],
+                ['Neutral', 200],
+              ]}
+              chartType="PieChart"
+            />
+            <VisualizationCard
+              title="Word Cloud"
+              description="Explore the most frequent words used."
+              placeholderImage={heartImage} // Replace with actual word cloud component
+            />
+            <VisualizationCard
+              title="Demographics Breakdown"
+              description="Visualize user demographics such as gender, age, and location."
+              chartData={[
+                ['Category', 'Percentage'],
+                ['Male', 60],
+                ['Female', 40],
+              ]}
+              chartType="BarChart"
+            />
+          </Grid>
         </Container>
       </div>
-    </Router>
+    </ThemeProvider>
   );
 }
 
-const HomePage = () => (
-  <Box textAlign="center">
-    <Typography variant="h5" gutterBottom>
-      Reddit DeepDive: Justin Baldoni
-    </Typography>
-    <Typography variant="body1">
-      Explore insights from Reddit data including sentiment, demographics, and more.
-    </Typography>
-  </Box>
-);
-
-const AboutPage = () => (
-  <Typography variant="h4" gutterBottom>
-    About Me
-  </Typography>
-);
-
-const ProjectsPage = () => (
-  <Grid container spacing={3} justifyContent="center">
-    <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        <CardContent>
-          <Typography variant="h6">Sentiment Distribution</Typography>
-          <Typography>Placeholder for sentiment distribution visualization.</Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        <CardContent>
-          <Typography variant="h6">Word Cloud</Typography>
-          <Typography>Placeholder for word cloud visualization.</Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        <CardContent>
-          <Typography variant="h6">Gender Breakdown</Typography>
-          <Typography>Placeholder for gender breakdown visualization.</Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        <CardContent>
-          <Typography variant="h6">Age/Race Breakdown</Typography>
-          <Typography>Placeholder for age and race breakdown visualization.</Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        <CardContent>
-          <Typography variant="h6">Language Distribution</Typography>
-          <Typography>Placeholder for language visualization.</Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12} sm={6} md={4}>
-      <Card>
-        <CardContent>
-          <Typography variant="h6">Location Data</Typography>
-          <Typography>Placeholder for location visualization.</Typography>
-        </CardContent>
-      </Card>
-    </Grid>
+// Component for Visualization Cards
+const VisualizationCard = ({ title, description, chartData, chartType, placeholderImage }) => (
+  <Grid item xs={12} sm={6} md={4}>
+    <Box
+      bgcolor="#ffe4e1"
+      borderRadius="10px"
+      p={2}
+      textAlign="center"
+      boxShadow="0px 4px 10px rgba(0,0,0,0.1)"
+    >
+      <Typography variant="h6" gutterBottom style={{ color: pink[700] }}>
+        {title}
+      </Typography>
+      <Typography variant="body2" gutterBottom>
+        {description}
+      </Typography>
+      {chartData && chartType ? (
+        <Chart
+          chartType={chartType}
+          data={chartData}
+          width="100%"
+          height="200px"
+          options={{
+            backgroundColor: '#ffe4e1',
+            legend: { position: 'bottom' },
+            colors: [pink[300], pink[500], pink[700]],
+          }}
+        />
+      ) : (
+        <img src={placeholderImage} alt={title} style={{ width: '100%', height: '200px' }} />
+      )}
+    </Box>
   </Grid>
 );
 
