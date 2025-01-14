@@ -31,10 +31,8 @@ jobs:
       run: |
         git config --global user.email "cfortiz1@jhu.edu"
         git config --global user.name "cristina-irene-fortiz"
-
     - name: Deploy to GitHub Pages
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Use the GitHub Actions token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub Actions token
       run: |
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/cristina-irene-fortiz/celebrity_haters.git
-        npx gh-pages -d build
+        npx gh-pages -d build --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/cristina-irene-fortiz/celebrity_haters.git
